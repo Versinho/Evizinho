@@ -70,7 +70,7 @@ public class PostController {
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
 		}
-		return "redirect:/posts/";
+		return "redirect:/posts";
 	}
 	 
 
@@ -97,7 +97,7 @@ public class PostController {
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
 			throw new ServiceException(e.getMessage());
 		}
-		return "redirect:/posts/";
+		return "redirect:/posts";
 	 }
 
 	@GetMapping("/posts/{id}")
