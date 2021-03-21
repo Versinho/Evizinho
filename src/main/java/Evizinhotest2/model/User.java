@@ -1,12 +1,16 @@
 package Evizinhotest2.model;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,6 +36,23 @@ public class User implements UserDetails{
 
 	@Column
 	private String phone;
+	
+	@ManyToMany
+	@JoinTable( 
+	        name = "users_roles", 
+	        joinColumns = @JoinColumn(
+	        name = "user_id", referencedColumnName = "id"), 
+	        inverseJoinColumns = @JoinColumn(
+	        name = "role_id", referencedColumnName = "role"))
+	private List<Role> roles; 
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 	public Integer getId() {
 		return id;
@@ -84,7 +105,7 @@ public class User implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return (Collection<? extends GrantedAuthority>) this.roles;
 	}
 
 	@Override

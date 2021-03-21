@@ -5,11 +5,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import Evizinhotest2.model.User;
 import Evizinhotest2.repository.UserRepository;
 
 @Repository
+@Transactional
 public class ImplementsUserDetailsService implements UserDetailsService {
 	
 	@Autowired
@@ -21,7 +23,7 @@ public class ImplementsUserDetailsService implements UserDetailsService {
 		if(user == null) {
 			throw new UsernameNotFoundException("Usuário não encontrado");
 		}
-		return user;
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), true, true, true, true, user.getAuthorities());
 	}
 
 }
