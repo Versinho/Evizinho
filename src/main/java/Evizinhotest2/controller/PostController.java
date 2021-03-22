@@ -3,7 +3,6 @@ package Evizinhotest2.controller;
 import java.util.List;
 import java.util.Optional;
 
-import Evizinhotest2.model.User;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

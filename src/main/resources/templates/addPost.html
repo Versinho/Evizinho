@@ -49,10 +49,10 @@ body {
         <form th:action="@{/posts/register}" action="#" th:object="${post}" method="post">
             <h1>Cadastrar post</h1>
             <p>
-                <input th:field="*{title}" id="title" name="title" placeholder="Titulo" type="text" />
+                <input th:field="*{title}" id="title" name="title" placeholder="Titulo" type="text" required>
             </p>
             <p>
-                <input th:field="*{details}" id="details" name="details" placeholder="Detalhes" type="text" />
+                <input th:field="*{details}" id="details" name="details" placeholder="Detalhes" type="text" required>
             </p>
             <p>
                 <input th:field="*{date}" id="date" name="date" placeholder="Data" type="text" />

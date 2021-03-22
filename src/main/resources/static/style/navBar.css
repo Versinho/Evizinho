@@ -26,3 +26,8 @@ body {
   background-color: #FF8000;
   color: white;
 }
+
+#out{
+	float: right;
+	padding: 14px 16px;
+}
