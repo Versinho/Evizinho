@@ -10,14 +10,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.JoinColumn;
+
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 @Entity
-public class User implements UserDetails{
+@Table(name="user")
+public class AbstractUser implements UserDetails{
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -26,16 +31,7 @@ public class User implements UserDetails{
 	private String username;
 
 	@Column(nullable = false)
-	private String email;
-
-	@Column(nullable = false)
 	private String password;
-
-	@Column(nullable = false)
-	private String apartment;
-
-	@Column
-	private String phone;
 	
 	@ManyToMany
 	@JoinTable( 
@@ -66,14 +62,6 @@ public class User implements UserDetails{
 		this.username = username;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -81,24 +69,9 @@ public class User implements UserDetails{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
-	public String getApartment() {
-		return apartment;
-	}
-
-	public void setApartment(String apartment) {
-		this.apartment = apartment;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public User() {
+	public AbstractUser() {
 		//Empty
 	}
 
@@ -136,5 +109,39 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	
+	@Column(nullable = false)
+	private String apartment;
+
+	@Column
+	private String phone;
+	
+	@Column(nullable = false)
+	private String email;
+
+	public String getApartment() {
+		return apartment;
+	}
+
+	public void setApartment(String apartment) {
+		this.apartment = apartment;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

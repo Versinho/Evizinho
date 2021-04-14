@@ -1,24 +1,20 @@
 package Evizinhotest2.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import Evizinhotest2.strategy.Post;
 
 @Entity
-public class Post {
+@Table(name="CPost")
+public class CondominoPost extends Post{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
+
 	@Column
 	private String date;
-	
-	@ManyToOne 
-	private User user;
 	
 	@Column
 	private String title;
@@ -26,24 +22,13 @@ public class Post {
 	@Column
 	private String details;
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -57,10 +42,7 @@ public class Post {
 		this.details = details;
 	}
 	
-	public Post() {
+	public CondominoPost() {
 		//empty
 	}
-	
-	
-
 }

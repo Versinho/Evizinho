@@ -15,7 +15,7 @@ public class Role implements GrantedAuthority{
 	private String role;
 
 	@ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private List<AbstractUser> users;
 	
 	public String getRole() {
 		return role;
@@ -25,11 +25,11 @@ public class Role implements GrantedAuthority{
 		this.role = role;
 	}
 	
-	public List<User> getUsuarios() {
+	public List<AbstractUser> getUsuarios() {
 		return users;
 	}
 
-	public void setUsuarios(List<User> users) {
+	public void setUsuarios(List<AbstractUser> users) {
 		this.users = users;
 	}
 

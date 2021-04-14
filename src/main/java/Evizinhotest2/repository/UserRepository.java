@@ -3,9 +3,9 @@ package Evizinhotest2.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Evizinhotest2.model.User;
+import Evizinhotest2.model.AbstractUser;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
-	User findByUsername(String username);
+public interface UserRepository extends JpaRepository<AbstractUser, Integer> {
+	AbstractUser findByUsername(String username);
 }

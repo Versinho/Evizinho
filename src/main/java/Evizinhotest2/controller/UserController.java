@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import Evizinhotest2.model.User;
+import Evizinhotest2.model.AbstractUser;
 import Evizinhotest2.service.UserService;
 
 @Controller
@@ -23,20 +24,20 @@ public class UserController {
 	private static final String MSG_ERROR = "Error.";
 	
 	@RequestMapping(value = "/users")
-	public List<User> getAllUsers(Model model) 
+	public List<AbstractUser> getAllUsers(Model model) 
 	{		
-		List<User> users = userService.getAllUsers();
+		List<AbstractUser> users = userService.getAllUsers();
 		model.addAttribute("users", users);
 		return users;
 	}	
 
 	 @RequestMapping(value = "/users/{id}")
-	 public Optional<User> getUser(@PathVariable Integer id) {
+	 public Optional<AbstractUser> getUser(@PathVariable Integer id) {
 	 	return userService.getUser(id);
 	 }
 
 	 @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
-	 public void updateUser(@RequestBody User user,@PathVariable Integer id ) {
+	 public void updateUser(@RequestBody AbstractUser user,@PathVariable Integer id ) {
 		 userService.updateUser(id, user);
 	 }
 	 
@@ -49,7 +50,7 @@ public class UserController {
 	 @GetMapping("/users/{id}")
 	 public String show(Model model, @PathVariable("id") Integer id) {
 		 if (id != null) {
-	 		User user = userService.getUser(id).get();
+	 		AbstractUser user = userService.getUser(id).get();
 	 		model.addAttribute("user", user);
 	 	}
 	 	return "showUser";
@@ -58,7 +59,7 @@ public class UserController {
 	@RequestMapping(value = "/users/form", method=RequestMethod.GET)
 	public String register(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			User user = new User();
+			AbstractUser user = new AbstractUser();
 			model.addAttribute("user", user);
 		}catch (Exception e) {
 			System.out.println("Exception:: exception");
@@ -73,10 +74,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/users/register", method=RequestMethod.POST)
-	public String register(User user, RedirectAttributes redirectAttributes) {
+	public String register(@ModelAttribute("user")AbstractUser user, RedirectAttributes redirectAttributes) {
 		try {
+			System.out.print("------------->>> yeah!!3");
 			userService.addUser(user);
+			System.out.print("------------->>> yeah!!4");
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
+			System.out.print("------------->>> yeah!!5");
 		}catch (Exception e) {
 			System.out.println("Exception:: exception");
 			e.printStackTrace();

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Evizinhotest2.model.Post;
+import Evizinhotest2.strategy.Post;
+
+
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {

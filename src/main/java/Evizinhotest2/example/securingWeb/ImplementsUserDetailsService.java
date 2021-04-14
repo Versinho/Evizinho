@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import Evizinhotest2.model.User;
+import Evizinhotest2.model.AbstractUser;
 import Evizinhotest2.repository.UserRepository;
 
 @Repository
@@ -18,7 +18,7 @@ public class ImplementsUserDetailsService implements UserDetailsService {
 	private UserRepository ur;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = ur.findByUsername(username);
+		AbstractUser user = ur.findByUsername(username);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("Usuário não encontrado");

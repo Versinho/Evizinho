@@ -10,6 +10,9 @@
         <form th:action="@{/users/register}" action="#" th:object="${user}" method="post">
             <h1>Cadastro</h1>
             <p>
+                <input th:field="*{id}" id="id" name="id" placeholder="id" type="number" required>
+            </p>
+            <p>
                 <input th:field="*{username}" id="username" name="username" placeholder="Nome" type="text" required>
             </p>
             <p>

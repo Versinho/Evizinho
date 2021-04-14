@@ -27,6 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll()
 		.and().logout().permitAll();
+		
+		http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override

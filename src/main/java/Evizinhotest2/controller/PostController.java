@@ -10,8 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import Evizinhotest2.model.Post;
+import Evizinhotest2.model.CondominoPost;
 import Evizinhotest2.service.PostService;
+import Evizinhotest2.strategy.Post;
 
 @Controller
 public class PostController {
@@ -40,7 +41,7 @@ public class PostController {
 	 @RequestMapping(value = "/posts/form", method=RequestMethod.GET)
 	 public String addPost(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			Post post = new Post();
+			Post post = new CondominoPost();
 			model.addAttribute("post", post);
 		}
 		catch (Exception e) {

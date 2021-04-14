@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import Evizinhotest2.model.Post;
+
 import Evizinhotest2.repository.PostRepository;
+import Evizinhotest2.strategy.Post;
 
 @Service
 @Transactional(readOnly = true)
@@ -17,7 +18,7 @@ public class PostService {
 	@Autowired
 	public PostRepository postRepository;
 		
-	public List<Post> getAllPosts() {
+	public List<Evizinhotest2.strategy.Post> getAllPosts() {
 		
 	    List<Post> posts = new ArrayList<>();
 		
