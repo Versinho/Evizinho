@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +31,9 @@ public class PostService {
 	
 	@Transactional(readOnly = false)
 	public void addPost(Post post) {
+		if(post.verify()) {
 	     postRepository.save(post);
+		}
 	}
 	
 	public Optional<Post> getPost(Integer id) {
@@ -54,6 +57,6 @@ public class PostService {
 		.forEach(posts::add);
 		   
 		return posts;	 
-		}
+	}
 
 }

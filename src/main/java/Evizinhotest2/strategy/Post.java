@@ -2,6 +2,7 @@ package Evizinhotest2.strategy;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +28,8 @@ public abstract class Post implements Serializable {
 	
 	@ManyToOne
 	AbstractUser user;
+	
+	public abstract Boolean verify();
 	
 	
 	public Integer getId() {

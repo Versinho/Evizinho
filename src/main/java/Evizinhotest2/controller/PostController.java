@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import Evizinhotest2.model.CondominoPost;
@@ -57,7 +58,7 @@ public class PostController {
 	 }
 
 	@RequestMapping(value = "/posts/register", method=RequestMethod.POST)
-	public String addPost(Post post, RedirectAttributes redirectAttributes) {
+	public String addPost(CondominoPost post, RedirectAttributes redirectAttributes) {
 		try {
 			postService.addPost(post);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
@@ -72,6 +73,17 @@ public class PostController {
 		}
 		return "redirect:/posts";
 	}
+	 
+	 /*@RequestMapping(value="/posts/form", method=RequestMethod.GET)
+	 public String cadastro() {
+		 return "addPost";
+		 
+	 }
+	 @RequestMapping(value="/salvarpost", method=RequestMethod.POST)
+	 public String addPost(Post post) {
+		 postService.addPost(post);
+		 return "home";
+	 }*/
 	 
 
 	 @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
@@ -111,6 +123,21 @@ public class PostController {
 			throw new ServiceException(e.getMessage());
 		}	
 		return "showPost";
+	}
+	
+	/*@PostMapping("/pesquisarpost")
+	public ModelAndView pesquisar(@RequestParam("nomepesquisa") String nomepesquisa) {
+		ModelAndView modelAndView = new ModelAndView("/posts");
+		modelAndView.addObject("posts", postService.getPostByTitle(nomepesquisa));
+		modelAndView("postobj", );
+		return modelAndView;
+	}*/
+	
+	@RequestMapping(value="/posts/user/{id}")
+	public String getPostersByUserId(Model model, @PathVariable Integer id){
+		List<Post> posts = postService.getPostsByUser(id);
+		model.addAttribute("posts", posts);
+		return "postsByUser";
 	}
 
 }

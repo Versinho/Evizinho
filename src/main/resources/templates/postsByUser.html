@@ -50,15 +50,9 @@
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar post" title="Type in a name">
 
-<form action="pesquisarpost" method="post">
-<label>pesquisa test</label>
-<input name="nomepesquisa">
-<input type="submit" value="Buscar">
-</form>
-
 <ul id="myUL">
     <li th:each="post : ${posts}">
-        <a th:text="${post.title}" th:href="@{/posts/{id}(id = ${post.id}) }">Default</a>
+        <a th:text="${post.title}" th:href="@{/posts/user/{id}(id = ${post.user.id}) }">Default</a>
 
     </li>
 </ul>

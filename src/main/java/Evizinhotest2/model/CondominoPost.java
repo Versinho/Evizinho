@@ -45,4 +45,10 @@ public class CondominoPost extends Post{
 	public CondominoPost() {
 		//empty
 	}
+	@Override
+	public Boolean verify() {
+		// TODO Auto-generated method stub
+		return true;
+		
+	}
 }
