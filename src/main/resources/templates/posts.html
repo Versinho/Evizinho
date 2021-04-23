@@ -47,14 +47,8 @@
 	<a href="/posts/form">Cadastrar post</a>
 </div>
 <h2>Posts</h2>
-
+<p>${success}</p>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar post" title="Type in a name">
-
-<form action="pesquisarpost" method="post">
-<label>pesquisa test</label>
-<input name="nomepesquisa">
-<input type="submit" value="Buscar">
-</form>
 
 <ul id="myUL">
     <li th:each="post : ${posts}">

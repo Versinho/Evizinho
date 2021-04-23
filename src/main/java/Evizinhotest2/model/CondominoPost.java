@@ -1,13 +1,11 @@
 package Evizinhotest2.model;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import Evizinhotest2.strategy.Post;
-
+@SuppressWarnings("serial")
 @Entity
 @Table(name="CPost")
 public class CondominoPost extends Post{
@@ -47,7 +45,6 @@ public class CondominoPost extends Post{
 	}
 	@Override
 	public Boolean verify() {
-		// TODO Auto-generated method stub
 		return true;
 		
 	}

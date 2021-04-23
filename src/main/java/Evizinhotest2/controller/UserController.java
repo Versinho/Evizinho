@@ -76,11 +76,8 @@ public class UserController {
 	@RequestMapping(value = "/users/register", method=RequestMethod.POST)
 	public String register(@ModelAttribute("user")AbstractUser user, RedirectAttributes redirectAttributes) {
 		try {
-			System.out.print("------------->>> yeah!!3");
 			userService.addUser(user);
-			System.out.print("------------->>> yeah!!4");
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
-			System.out.print("------------->>> yeah!!5");
 		}catch (Exception e) {
 			System.out.println("Exception:: exception");
 			e.printStackTrace();
