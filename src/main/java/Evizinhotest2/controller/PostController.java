@@ -62,7 +62,7 @@ public class PostController {
 			postService.addPost(post);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
 		} catch (Exception e) {
-			System.out.println("Exception:: exception");
+			System.out.println("Erro na inserção de um post");
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
 		}catch (Throwable e) {
@@ -118,6 +118,13 @@ public class PostController {
 		List<CondominoPost> posts = postService.getPostsByUser(id);
 		model.addAttribute("posts", posts);
 		return "postsByUser";
+	}
+	
+	@RequestMapping(value="/posts/categoria/{category}")
+	public String getPostersByCategory(Model model, @PathVariable String category){
+		List<CondominoPost> posts = postService.getPostsByCategory(category);
+		model.addAttribute("posts", posts);
+		return "postsByCategory";
 	}
 
 }

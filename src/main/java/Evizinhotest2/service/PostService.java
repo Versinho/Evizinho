@@ -20,9 +20,7 @@ public class PostService extends AbstractPostService<CondominoPost>{
 		super(condominoPostRepository);
 	}
 	
-	public List<CondominoPost> getPostsByTitle(String title){
-		return condominoPostRepository.findByTitle(title);
+	public List<CondominoPost> getPostsByCategory(String category){
+		return condominoPostRepository.findByCategory(category);
 	}
-	
-
 }

@@ -25,9 +25,12 @@ public abstract class AbstractPostService<T extends Post> {
 	public List<T> getAllPosts(){
 		return postRepository.findAll();
 	}
-	public void addPost(T post) {
+	public void addPost(T post) throws Exception{
 		if(post.verify()) {
 			postRepository.save(post);
+		}
+		else {
+			throw new Exception();
 		}
 	}
 	public Optional<T> getPost(Integer id){

@@ -1,7 +1,9 @@
 package Evizinhotest2.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,13 @@ public abstract class Post implements Serializable {
 	@ManyToOne
 	AbstractUser user;
 	
+	@Column
+	final LocalDate date = LocalDate.now();
+	
+	public LocalDate getDate() {
+		return date;
+	}
+
 	public abstract Boolean verify();
 	
 	

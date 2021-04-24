@@ -8,5 +8,5 @@ import Evizinhotest2.model.CondominoPost;
 
 @Repository
 public interface CondominoPostRepository extends PostRepository<CondominoPost>{
-	public List<CondominoPost> findByTitle(String Title);
+	public List<CondominoPost> findByCategory(String category);
 }

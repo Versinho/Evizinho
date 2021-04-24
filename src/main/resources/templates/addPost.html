@@ -55,7 +55,11 @@ body {
                 <input th:field="*{details}" id="details" name="details" placeholder="Detalhes" type="text" required>
             </p>
             <p>
-                <input th:field="*{date}" id="date" name="date" placeholder="Data" type="text" />
+                <select th:field="*{category}" id="category" name="category">
+    				<option value="venda">Venda</option>
+    				<option value="troca">Troca</option>
+				    <option value="servico">Serviço</option>
+				</select>
             </p>
             <p>
                 <input th:field="*{user.id}" id="user" name="user" placeholder="Usuario" type="number" />

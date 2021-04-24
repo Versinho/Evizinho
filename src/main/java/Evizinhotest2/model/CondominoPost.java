@@ -1,6 +1,8 @@
 package Evizinhotest2.model;
 
 
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,23 +12,22 @@ import javax.persistence.Table;
 @Table(name="CPost")
 public class CondominoPost extends Post{
 	
-
-	@Column
-	private String date;
-	
 	@Column
 	private String title;
 	
 	@Column
 	private String details;
 	
-	public String getDate() {
-		return date;
+	@Column
+	private String category;
+	
+	public String getCategory() {
+		return category;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -45,6 +46,20 @@ public class CondominoPost extends Post{
 	}
 	@Override
 	public Boolean verify() {
+		ArrayList<String> categorys = new ArrayList<>();
+		categorys.add("venda");
+		categorys.add("troca");
+		categorys.add("servico");
+		
+		if(!categorys.contains(this.category)) {
+			return false;
+		}
+		else if(this.title == null || this.details == null || this.user == null) {
+			return false;
+		}
+		else if(this.title == "" || this.details == "") {
+			return false;
+		}
 		return true;
 		
 	}
