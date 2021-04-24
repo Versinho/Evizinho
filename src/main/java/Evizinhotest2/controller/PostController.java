@@ -12,12 +12,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import Evizinhotest2.model.CondominoPost;
 import Evizinhotest2.model.Post;
-import Evizinhotest2.service.PostService;
+import Evizinhotest2.service.CondominoPostService;
 
 @Controller
 public class PostController {
 	@Autowired
-	private PostService postService;
+	private CondominoPostService postService;
 
 	private static final String MSG_SUCESS_ADD = "Post Adicionado com Sucesso!";
 	private static final String MSG_SUCESS_UPDATE = "Post Atualizado com Sucesso!";

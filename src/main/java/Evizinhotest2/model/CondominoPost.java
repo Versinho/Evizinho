@@ -13,9 +13,6 @@ import javax.persistence.Table;
 public class CondominoPost extends Post{
 	
 	@Column
-	private String title;
-	
-	@Column
 	private String details;
 	
 	@Column
@@ -28,12 +25,6 @@ public class CondominoPost extends Post{
 		this.category = category;
 	}
 	
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getDetails() {
 		return details;
 	}

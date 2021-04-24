@@ -87,7 +87,7 @@ public class UserController {
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
 		}
-		return "home";
+		return "login";
 	}
 
 }

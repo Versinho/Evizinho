@@ -12,11 +12,11 @@ import Evizinhotest2.repository.CondominoPostRepository;
 
 @Service
 @Transactional
-public class PostService extends AbstractPostService<CondominoPost>{
+public class CondominoPostService extends AbstractPostService<CondominoPost>{
 	@Autowired
 	private CondominoPostRepository condominoPostRepository;
 	
-	public PostService(CondominoPostRepository condominoPostRepository) {
+	public CondominoPostService(CondominoPostRepository condominoPostRepository) {
 		super(condominoPostRepository);
 	}
 	

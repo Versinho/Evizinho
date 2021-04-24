@@ -22,6 +22,9 @@ public abstract class Post implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
 	
+	@Column
+	String title;
+	
 	@ManyToOne
 	AbstractUser user;
 	
@@ -46,6 +49,14 @@ public abstract class Post implements Serializable {
 	}
 	public void setUser(AbstractUser user) {
 		this.user = user;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

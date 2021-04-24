@@ -14,12 +14,11 @@ import Evizinhotest2.repository.PostRepository;
 @Transactional
 public abstract class AbstractPostService<T extends Post> {
 	
+	@Autowired
 	private PostRepository<T> postRepository;
 	
-	@Autowired
 	public AbstractPostService(PostRepository<T> postRepository){
 		this.postRepository = postRepository;
-		
 	}
 	
 	public List<T> getAllPosts(){
@@ -42,7 +41,7 @@ public abstract class AbstractPostService<T extends Post> {
 	public void deletePost(Integer id) {
 		postRepository.deleteById(id);
 	}
-	public List<T> getPostsByUser(Integer id){
-		return postRepository.findByUserId(id);
+	public List<T> getPostsByUser(Integer userId){
+		return postRepository.findByUserId(userId);
 	}
 }
