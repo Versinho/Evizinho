@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="CPost")
-public class CondominoPost extends Post{
+public class CondominoPost extends Post<CondominioUser>{
 	
 	@Column
 	private String details;

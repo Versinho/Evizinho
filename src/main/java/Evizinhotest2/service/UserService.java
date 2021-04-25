@@ -16,7 +16,7 @@ import Evizinhotest2.repository.UserRepository;
 
 @Service
 @Transactional(readOnly = true)
-public class UserService {
+public class UserService <T extends AbstractUser>{
 	@Autowired
 	public UserRepository userRepository;
 		
@@ -27,11 +27,11 @@ public class UserService {
 	    userRepository.findAll()
 	    .forEach(users::add);
 		
-	    return users;		
+	    return users;
 	}
 	
 	@Transactional(readOnly = false)
-	public void addUser(AbstractUser user) {
+	public void addUser(T user) {
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 	    userRepository.save(user);
 	}
@@ -41,7 +41,7 @@ public class UserService {
 	}
 	
 	@Transactional(readOnly = false)
-	public AbstractUser updateUser(Integer id, AbstractUser user) {
+	public T updateUser(Integer id, T user) {
 	     userRepository.save(user);
 	     return user;
 	}

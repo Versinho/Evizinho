@@ -3,15 +3,7 @@ package Evizinhotest2.model;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 
 
 import org.springframework.security.core.GrantedAuthority;
@@ -19,12 +11,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 @Entity
-@Table(name="user")
-public class AbstractUser implements UserDetails{
-	
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class AbstractUser implements UserDetails{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(nullable = false, unique = true)
@@ -110,24 +103,9 @@ public class AbstractUser implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
-	
-	@Column(nullable = false)
-	private String apartment;
 
-	@Column
+	@Column(nullable = false)
 	private String phone;
-	
-	@Column(nullable = false)
-	private String email;
-
-	public String getApartment() {
-		return apartment;
-	}
-
-	public void setApartment(String apartment) {
-		this.apartment = apartment;
-	}
 
 	public String getPhone() {
 		return phone;
@@ -137,11 +115,4 @@ public class AbstractUser implements UserDetails{
 		this.phone = phone;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 }

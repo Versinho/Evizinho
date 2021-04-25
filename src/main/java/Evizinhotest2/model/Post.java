@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Post implements Serializable {
+public abstract class Post <T extends AbstractUser> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public abstract class Post implements Serializable {
 	String title;
 	
 	@ManyToOne
-	AbstractUser user;
+	T user;
 	
 	@Column
 	final LocalDate date = LocalDate.now();
@@ -44,10 +44,10 @@ public abstract class Post implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public AbstractUser getUser() {
+	public T getUser() {
 		return user;
 	}
-	public void setUser(AbstractUser user) {
+	public void setUser(T user) {
 		this.user = user;
 	}
 	

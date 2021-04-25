@@ -3,6 +3,7 @@ package Evizinhotest2.controller;
 import java.util.List;
 import java.util.Optional;
 
+import Evizinhotest2.model.CondominioUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,7 @@ public class UserController {
 	 @GetMapping("/users/{id}")
 	 public String show(Model model, @PathVariable("id") Integer id) {
 		 if (id != null) {
-	 		AbstractUser user = userService.getUser(id).get();
+	 		AbstractUser user = (AbstractUser) userService.getUser(id).get();
 	 		model.addAttribute("user", user);
 	 	}
 	 	return "showUser";
@@ -59,7 +60,7 @@ public class UserController {
 	@RequestMapping(value = "/users/form", method=RequestMethod.GET)
 	public String register(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			AbstractUser user = new AbstractUser();
+			AbstractUser user = new CondominioUser();
 			model.addAttribute("user", user);
 		}catch (Exception e) {
 			System.out.println("Exception:: exception");
@@ -74,7 +75,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/users/register", method=RequestMethod.POST)
-	public String register(@ModelAttribute("user")AbstractUser user, RedirectAttributes redirectAttributes) {
+	public String register(CondominioUser user, RedirectAttributes redirectAttributes) {
 		try {
 			userService.addUser(user);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
