@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import Evizinhotest2.model.CondominoPost;
-import Evizinhotest2.model.Post;
 import Evizinhotest2.service.CondominoPostService;
 
 @Controller
@@ -41,7 +40,7 @@ public class PostController {
 	 @RequestMapping(value = "/posts/form", method=RequestMethod.GET)
 	 public String addPost(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			Post post = new CondominoPost();
+			CondominoPost post = new CondominoPost();
 			model.addAttribute("post", post);
 		}
 		catch (Exception e) {
@@ -103,7 +102,7 @@ public class PostController {
 	public String show(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (id != null) {
-				Post post = postService.getPost(id).get();
+				CondominoPost post = postService.getPost(id).get();
 				model.addAttribute("post", post);
 			}
 		} catch (Exception e) {

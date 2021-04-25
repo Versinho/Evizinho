@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Post <T extends AbstractUser> implements Serializable {
+public abstract class Post<T extends AbstractUser> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
