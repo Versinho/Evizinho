@@ -139,9 +139,9 @@ public class PostController {
 		return "postsByUser";
 	}
 
-	@RequestMapping(value="/posts/categoria/{category}")
-	public String getPostersByCategory(Model model, @PathVariable String category){
-		List<CondominoPost> posts = postService.getPostsByCategory(category);
+	@RequestMapping(value="/posts/{categoria}/{category}")
+	public String getPostersByCategory(Model model, @PathVariable String categoria, @PathVariable String category){
+		List<CondominoPost> posts = postService.filter(categoria, category);
 		model.addAttribute("posts", posts);
 		return "postsByCategory";
 	}

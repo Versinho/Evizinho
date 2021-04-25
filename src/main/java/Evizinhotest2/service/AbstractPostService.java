@@ -42,4 +42,6 @@ public abstract class AbstractPostService<T extends Post> {
 	public List<T> getPostsByUser(Integer userId){
 		return postRepository.findByUserId(userId);
 	}
+	
+	public abstract List<T> filter(String category, String subCategory);
 }

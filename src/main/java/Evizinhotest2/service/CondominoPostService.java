@@ -19,8 +19,14 @@ public class CondominoPostService extends AbstractPostService<CondominoPost>{
 	public CondominoPostService(CondominoPostRepository condominoPostRepository) {
 		super(condominoPostRepository);
 	}
-	
-	public List<CondominoPost> getPostsByCategory(String category){
-		return condominoPostRepository.findByCategory(category);
+
+	@Override
+	public List<CondominoPost> filter(String category, String subCategory) {
+		if(category.equals("categoria")) {
+			return condominoPostRepository.findByCategory(subCategory);
+		}
+		else {
+			return null;
+		}
 	}
 }
