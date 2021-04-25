@@ -36,7 +36,6 @@ public abstract class AbstractPostService<T extends Post> {
 	public Optional<T> getPost(Integer id){
 		return postRepository.findById(id);
 	}
-
 	public void deletePost(Integer id) {
 		postRepository.deleteById(id);
 	}

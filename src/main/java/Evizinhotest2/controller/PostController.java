@@ -86,6 +86,7 @@ public class PostController {
 		}
 		return "updatePost";
 	}
+
 	@RequestMapping(value = "/posts/update", method=RequestMethod.POST)
 	public String updatePost(CondominoPost post, RedirectAttributes redirectAttributes) {
 		try {
