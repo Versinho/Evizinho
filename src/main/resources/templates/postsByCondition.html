@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style/navBar.css">
+<link rel="stylesheet" href="../style/navBar.css">
 <meta charset="utf-8">
 <style>
 * {
@@ -52,7 +52,7 @@
 
 <ul id="myUL">
     <li th:each="post : ${posts}">
-        <a th:text="${post.title}" th:href="@{/posts/categoria/{category}(category = ${post.category}) }">Default</a>
+        <a th:text="${post.title}" th:href="@{/posts/condicao/{condition}(condition = ${post.condition}) }">Default</a>
 
     </li>
 </ul>
