@@ -1,67 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout">
-	<head>
-		<link rel="stylesheet" href="style/navBar.css">
-		<meta charset="utf-8" />
-		<title>Perfil de usuário</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+	<link rel="stylesheet" href="style/navBar.css">
+	<meta charset="utf-8" />
+	<title>Perfil de usuário</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
+		.topnav {
+			overflow: hidden;
+			background-color: #333;
+		}
 
-.topnav a {
-  float: left;
-  color: #FF8000;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+		.topnav a {
+			float: left;
+			color: #FF8000;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+		}
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+		.topnav a:hover {
+			background-color: #ddd;
+			color: black;
+		}
 
-.topnav a.active {
-  background-color: #FF8000;
-  color: white;
-}
-</style>
-	</head>
-	<body>
+		.topnav a.active {
+			background-color: #FF8000;
+			color: white;
+		}
+	</style>
+</head>
+<body>
 
-		<div class="topnav">
-  			<a class="active" href="/home">Home</a>
-			<a href="/users">Users</a>
-			<a href="/posts">Posts</a>
-			<a href="/posts/form">Cadastrar post</a>
-		</div>
-		
-		<div layout:fragment="content">
-			<h1>Perfil de Usuário</h1>
-			<hr />
-			<div class="form-group"> 
-				<label for="username">Name: </label>  
-				<span th:text="${user.username}"></span> 
-			</div>
-			<div class="form-group"> 
-				<label for="email">Apartamento: </label>  
-				<span th:text="${user.apartment}"></span> 
-			</div>
-			<div class="form-group"> 
-				<label for="email">Telefone: </label>  
-				<span th:text="${user.phone}"></span> 
-			</div>  
-			
-		</div>
-	</body>
+<div class="topnav">
+	<a class="active" href="/home">Home</a>
+	<a href="/users">Users</a>
+	<a href="/posts">Posts</a>
+	<a href="/posts/form">Cadastrar post</a>
+</div>
+
+<div layout:fragment="content">
+	<h1>Perfil de Usuário</h1>
+	<hr />
+	<div class="form-group">
+		<label for="username">Usuário: </label>
+		<span th:text="${user.username}"></span>
+	</div>
+	<div class="form-group">
+		<label for="name">nome: </label>
+		<span th:text="${user.name}"></span>
+	</div>
+	<div class="form-group">
+		<label for="lastname">sobrenome: </label>
+		<span th:text="${user.lastname}"></span>
+	</div>
+	<div class="form-group">
+		<label for="email">Apartamento: </label>
+		<span th:text="${user.apartment}"></span>
+	</div>
+	<div class="form-group">
+		<label for="email">Telefone: </label>
+		<span th:text="${user.phone}"></span>
+	</div>
+
+</div>
+</body>
 </html>

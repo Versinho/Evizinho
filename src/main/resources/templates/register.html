@@ -18,7 +18,7 @@
         .container {
             background: #fff;
             padding: 30px;
-            width: 500px;
+            width: 600px;
             border-radius: 10px;
             overflow: hidden;
             display: flex;
@@ -26,6 +26,13 @@
             justify-content: center;
             padding: 30px;
             flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
         }
 
         * {
@@ -87,26 +94,35 @@
     <div class="container">
         <form th:action="@{/users/register}" action="#" th:object="${user}" method="post">
             <h1>Cadastro</h1>
-            <div><label> User Name :
+            <div class="row">
+                <label> Nome do usuário :
                 <input th:field="*{username}" id="username" name="username" type="text" required>
             </label>
-            </div>
-            <div>
-                <label> Telefone :
-                    <input th:field="*{phone}" id="phone" name="phone" type="text"/>
-                </label>
-            </div>
-            <div>
-                <label> Apartamento :
-                    <input th:field="*{apartment}" id="apartment" name="apartment" type="text">
-                </label>
-            </div>
-            <div>
+
                 <label> Senha :
                     <input th:field="*{password}" id="password" name="password" type="password"
                            required>
                 </label>
             </div>
+            <div class="row">
+                <label> Nome :
+                    <input th:field="*{name}" id="name" name="name" type="text" required>
+                </label>
+
+                <label> Sobrenome :
+                    <input th:field="*{lastname}" id="lastname" name="lastname" type="text" required>
+                </label>
+            </div>
+            <div class="row">
+                <label> Telefone :
+                    <input th:field="*{phone}" id="phone" name="phone" type="text"/>
+                </label>
+
+                <label> Apartamento :
+                    <input th:field="*{apartment}" id="apartment" name="apartment" type="text">
+                </label>
+            </div>
+
             <div>
                 <input class="send" type="submit" value="Enviar"></input>
             </div>
