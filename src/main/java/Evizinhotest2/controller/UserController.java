@@ -78,16 +78,18 @@ public class UserController {
 		try {
 			userService.addUser(user);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
+			return "login";
 		}catch (Exception e) {
-			System.out.println("Exception:: exception");
+			System.out.println("Erro ao cadastrar usuário.");
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
+			return "redirect:/users/form";
 		}catch (Throwable e) {
 			System.out.println("Throwable:: exception");
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("error", MSG_ERROR);
+			return "redirect:/users/form";
 		}
-		return "login";
 	}
 
 }

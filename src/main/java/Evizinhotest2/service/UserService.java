@@ -31,9 +31,13 @@ public class UserService{
 	}
 	
 	@Transactional(readOnly = false)
-	public void addUser(AbstractUser user) {
-		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-	    userRepository.save(user);
+	public void addUser(AbstractUser user) throws Exception{
+		if (userRepository.findByUsername(user.getUsername()) != null){
+			throw new Exception();
+		} else {
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			userRepository.save(user);
+		}
 	}
 	
 	public Optional<AbstractUser> getUser(Integer id) {
@@ -50,6 +54,5 @@ public class UserService{
 	public void deleteUser(Integer id) {
 	     userRepository.deleteById(id);
 	}
-	
 
 }
