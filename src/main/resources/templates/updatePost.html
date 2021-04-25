@@ -22,38 +22,24 @@
                 <input th:field="*{title}" id="title" name="title" placeholder="Titulo" type="text" required>
             </p>
             <p>
+                <input th:field="*{details}" id="details" name="details" placeholder="Detalhes" type="text" required>
+            </p>
+            <p>
                 <input th:field="*{price}" id="price" name="price" placeholder="Preço" type="number" step="0.01" min=0 required>
             </p>
             <p>
-                <select th:field="*{platform}" id="platform" name="platform">
-    				<option value="ps4">PS4</option>
-    				<option value="ps3">PS3</option>
-    				<option value="xboxone">Xbox One</option>
-				    <option value="xbox360">Xbox 360</option>
-				    <option value="pc">PC</option>
-				    <option value="nintendoswitch">Nintendo Switch</option>
-				    <option value="outro">outro</option>
-				</select>
+                <select th:field="*{category}" id="category" name="category">
+                    <option value="venda">Venda</option>
+                    <option value="troca">Troca</option>
+                    <option value="servico">Serviço</option>
+                </select>
             </p>
             <p>
-                <select th:field="*{condition}" id="condition" name="condition">
-    				<option value="novo">novo</option>
-    				<option value="usado">usado</option>
-				</select>
+                <input th:field="*{location}" id="location" name="location" placeholder="Localização" type="text" required>
             </p>
+
             <p>
-                <select th:field="*{genre}" id="genre" name="genre">
-    				<option value="rpg">RPG</option>
-    				<option value="acao">Ação</option>
-    				<option value="aventura">Aventura</option>
-    				<option value="estrategia">Estratégia</option>
-    				<option value="esporte">Esporte</option>
-    				<option value="corrida">Corrida</option>
-    				<option value="simulacao">Simulação</option>
-    				<option value="testeERRo">TESTE ERRO</option>
-				</select>
-            </p>
-                <button class="save" type="submit">Salvar</button>
+                <input th:field="*{user.id}" id="user" name="user" placeholder="Usuario" type="number" />
             </p>
             <p>
                 <input th:field="*{id}" id="id" name="id" placeholder="Id" type="text" required>

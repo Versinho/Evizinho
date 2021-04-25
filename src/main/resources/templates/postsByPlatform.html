@@ -52,7 +52,7 @@
 
 <ul id="myUL">
     <li th:each="post : ${posts}">
-        <a th:text="${post.title}" th:href="@{/posts/plataforma/{platform}(platform = ${post.platform}) }">Default</a>
+        <a th:text="${post.title}" th:href="@{/posts/local/{location}(location = ${post.location}) }">Default</a>
 
     </li>
 </ul>

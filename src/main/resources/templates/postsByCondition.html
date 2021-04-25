@@ -52,7 +52,7 @@
 
 <ul id="myUL">
     <li th:each="post : ${posts}">
-        <a th:text="${post.title}" th:href="@{/posts/condicao/{condition}(condition = ${post.condition}) }">Default</a>
+        <a th:text="${post.title}" th:href="@{/posts/categoria/{category}(category = ${post.category}) }">Default</a>
 
     </li>
 </ul>

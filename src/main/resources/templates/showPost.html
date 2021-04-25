@@ -55,6 +55,14 @@ body {
         <span th:text="${post.title}"></span>
     </div>
     <div class="form-group">
+        <label for="details">Detalhes: </label>
+        <span th:text="${post.details}"></span>
+    </div>
+    <div class="form-group">
+        <label for="location">Localização: </label>
+        <span th:text="${post.location}"></span>
+    </div>
+    <div class="form-group">
         <label for="price">Preço: </label>
         <span th:text="${post.price}"></span>
     </div>
@@ -67,17 +75,10 @@ body {
         <span th:text="${post.user.username}"></span>
     </div>
     <div class="form-group">
-        <label for="platform">Plataforma: </label>
-        <span th:text="${post.platform}"></span>
+        <label for="category">Categoria: </label>
+        <span th:text="${post.category}"></span>
     </div>
-    <div class="form-group">
-        <label for="condition">Condição: </label>
-        <span th:text="${post.condition}"></span>
-    </div>
-    <div class="form-group">
-        <label for="genre">Gênero: </label>
-        <span th:text="${post.genre}"></span>
-    </div>
+
     <div>
     	<form th:action="@{${post.id +'/delete'}}" th:object="${post}" method="post">
                         <input type="hidden" th:field="${post}">Delete</input>

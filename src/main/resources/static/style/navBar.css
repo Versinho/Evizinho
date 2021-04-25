@@ -6,12 +6,13 @@ body {
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #55c5af;
+  color: white;
 }
 
 .topnav a {
   float: left;
-  color: #0000FF;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -24,8 +25,8 @@ body {
 }
 
 .topnav a.active {
-  background-color: #0000FF;
-  color: white;
+  background-color: #ACFCD9;
+  color: black;
 }
 
 #out{
