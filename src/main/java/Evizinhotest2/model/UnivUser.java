@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="conduser")
-public class GamerUser extends AbstractUser{
+public class UnivUser extends AbstractUser{
 
 	@Column(nullable = false)
 	private String course;
@@ -20,5 +20,5 @@ public class GamerUser extends AbstractUser{
 		this.course = course;
 	}
 
-	public GamerUser(){}
+	public UnivUser(){}
 }

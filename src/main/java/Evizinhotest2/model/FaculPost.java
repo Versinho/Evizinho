@@ -7,10 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name="CPost")
-public class GamerPost extends Post<GamerUser>{
+public class FaculPost extends Post<UnivUser>{
 
 	@Column
 	private String location;
@@ -56,7 +55,7 @@ public class GamerPost extends Post<GamerUser>{
 		this.category = category;
 	}
 
-	public GamerPost() {
+	public FaculPost() {
 		//empty
 	}
 	@Override
