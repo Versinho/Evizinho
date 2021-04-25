@@ -72,17 +72,36 @@ public class PostController {
 		return "redirect:/posts";
 	}
 
-	 @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
-	 public void updatePost(@RequestBody CondominoPost post,@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+	 @RequestMapping(value = "/posts/{id}/edit", method = RequestMethod.GET)
+	 public String updatePost(Model model,@PathVariable Integer id, RedirectAttributes redirectAttributes) {
 		try {
 			if (id != null) {
-				postService.updatePost(id, post);
-				redirectAttributes.addFlashAttribute("success", MSG_SUCESS_UPDATE);
+				//postService.updatePost(id, post);
+				//redirectAttributes.addFlashAttribute("success", MSG_SUCESS_UPDATE);
+				Optional<CondominoPost> post = postService.getPost(id);
+				model.addAttribute("post", post);
 			}
 		} catch (Exception e) {
 			throw new ServiceException(e.getMessage());
-		}	 
+		}
+		return "updatePost";
 	}
+	 @RequestMapping(value = "/posts/update", method=RequestMethod.POST)
+	 public String updatePost(CondominoPost post, RedirectAttributes redirectAttributes) {
+		 try {
+			 postService.addPost(post);
+			 redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
+		 } catch (Exception e) {
+			 System.out.println("Erro na inserção de um post");
+			 e.printStackTrace();
+			 redirectAttributes.addFlashAttribute("error", MSG_ERROR);
+		 }catch (Throwable e) {
+			 System.out.println("Throwable:: exception");
+			 e.printStackTrace();
+			 redirectAttributes.addFlashAttribute("error", MSG_ERROR);
+		}
+		 return "redirect:/posts";
+	 }
  
 	 @RequestMapping(value = "/posts/{id}/delete")
 	 public String deletePost(@PathVariable Integer id, RedirectAttributes redirectAttributes) {

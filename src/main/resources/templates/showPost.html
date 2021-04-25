@@ -72,6 +72,9 @@ body {
                         <button type="submit" onClick="return confirm('sure?')"/>
         </form>
 	</div>
+	<p>
+    	<a th:text="Editar" th:href="@{/posts/{id}/edit(id = ${post.id}) }"></a>
+    </p>
 </div>
 </body>
 </html>
