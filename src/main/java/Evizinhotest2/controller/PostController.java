@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import Evizinhotest2.model.GamerPost;
+import Evizinhotest2.model.UnivPost;
 import Evizinhotest2.service.GamerPostService;
 
 @Controller
@@ -24,23 +24,23 @@ public class PostController {
 	private static final String MSG_ERROR = "Error.";
 
 	 @RequestMapping(value = "/posts")
-	  public List<GamerPost> getAllPosts(Model model) 
+	  public List<UnivPost> getAllPosts(Model model)
 	  {		
-		 List<GamerPost> posts = postService.getAllPosts();
+		 List<UnivPost> posts = postService.getAllPosts();
 		 model.addAttribute("posts", posts);
 		 return posts;
 	  }	
 	 
 	 
 	 @RequestMapping(value = "/posts/{id}")
-	 public Optional<GamerPost> getPost(@PathVariable Integer id) {
+	 public Optional<UnivPost> getPost(@PathVariable Integer id) {
 	 	return postService.getPost(id);
 	 }
 	 
 	 @RequestMapping(value = "/posts/form", method=RequestMethod.GET)
 	 public String addPost(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			GamerPost post = new GamerPost();
+			UnivPost post = new UnivPost();
 			model.addAttribute("post", post);
 		}
 		catch (Exception e) {
@@ -56,7 +56,7 @@ public class PostController {
 	 }
 
 	@RequestMapping(value = "/posts/register", method=RequestMethod.POST)
-	public String addPost(GamerPost post, RedirectAttributes redirectAttributes) {
+	public String addPost(UnivPost post, RedirectAttributes redirectAttributes) {
 		try {
 			postService.addPost(post);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
@@ -78,7 +78,7 @@ public class PostController {
 			if (id != null) {
 				//postService.updatePost(id, post);
 				//redirectAttributes.addFlashAttribute("success", MSG_SUCESS_UPDATE);
-				Optional<GamerPost> post = postService.getPost(id);
+				Optional<UnivPost> post = postService.getPost(id);
 				model.addAttribute("post", post);
 			}
 		} catch (Exception e) {
@@ -87,7 +87,7 @@ public class PostController {
 		return "updatePost";
 	}
 	 @RequestMapping(value = "/posts/update", method=RequestMethod.POST)
-	 public String updatePost(GamerPost post, RedirectAttributes redirectAttributes) {
+	 public String updatePost(UnivPost post, RedirectAttributes redirectAttributes) {
 		 try {
 			 postService.addPost(post);
 			 redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
@@ -121,7 +121,7 @@ public class PostController {
 	public String show(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (id != null) {
-				GamerPost post = postService.getPost(id).get();
+				UnivPost post = postService.getPost(id).get();
 				model.addAttribute("post", post);
 			}
 		} catch (Exception e) {
@@ -133,14 +133,14 @@ public class PostController {
 	
 	@RequestMapping(value="/posts/user/{id}")
 	public String getPostersByUserId(Model model, @PathVariable Integer id){
-		List<GamerPost> posts = postService.getPostsByUser(id);
+		List<UnivPost> posts = postService.getPostsByUser(id);
 		model.addAttribute("posts", posts);
 		return "postsByUser";
 	}
 	
 	@RequestMapping(value="/posts/{category}/{subCategory}")
 	public String getPostersByFilter(Model model, @PathVariable String category, @PathVariable String subCategory){
-		List<GamerPost> posts = postService.filter(category, subCategory);
+		List<UnivPost> posts = postService.filter(category, subCategory);
 		model.addAttribute("posts", posts);
 		return "postsByPlatform";
 	}

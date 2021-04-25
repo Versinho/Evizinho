@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import Evizinhotest2.model.GamerPost;
-import Evizinhotest2.repository.GamerPostRepository;
+import Evizinhotest2.model.UnivPost;
+import Evizinhotest2.repository.UnivPostRepository;
 
 
 @Service
 @Transactional
-public class GamerPostService extends AbstractPostService<GamerPost>{
+public class GamerPostService extends AbstractPostService<UnivPost>{
 	@Autowired
-	private GamerPostRepository gamerPostRepository;
+	private UnivPostRepository univPostRepository;
 	
-	public GamerPostService(GamerPostRepository gamerPostRepository) {
-		super(gamerPostRepository);
+	public GamerPostService(UnivPostRepository univPostRepository) {
+		super(univPostRepository);
 	}
 	
 	/*public List<GamerPost> getPostsByPlatform(String platform){
@@ -31,15 +31,15 @@ public class GamerPostService extends AbstractPostService<GamerPost>{
 	}*/
 
 	@Override
-	public List<GamerPost> filter(String category, String subCategory) {
+	public List<UnivPost> filter(String category, String subCategory) {
 		if(category.equals("plataforma")) {
-			return gamerPostRepository.findByPlatform(subCategory);
+			return univPostRepository.findByPlatform(subCategory);
 		}
 		else if(category.equals("genero")) {
-			return gamerPostRepository.findByGenre(subCategory);
+			return univPostRepository.findByGenre(subCategory);
 		}
 		else if(category.equals("condicao")) {
-			return gamerPostRepository.findByCondition(subCategory);
+			return univPostRepository.findByCondition(subCategory);
 		}
 		else {
 			return null;

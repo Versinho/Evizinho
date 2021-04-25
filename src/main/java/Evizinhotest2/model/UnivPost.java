@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="CPost")
-public class GamerPost extends Post<GamerUser>{
+public class UnivPost extends Post<UnivUser>{
 	
 	@Column
 	private String platform;
@@ -49,7 +49,7 @@ public class GamerPost extends Post<GamerUser>{
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-	public GamerPost() {
+	public UnivPost() {
 		//empty
 	}
 	@Override
