@@ -10,11 +10,17 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="CPost")
-public class CondominoPost extends Post<CondominioUser>{
+public class UniversidadePost extends Post<UniversidadeUser>{
 	
 	@Column
 	private String details;
-	
+
+	@Column
+	private String price;
+
+	@Column
+	private String location;
+
 	@Column
 	private String category;
 	
@@ -31,8 +37,14 @@ public class CondominoPost extends Post<CondominioUser>{
 	public void setDetails(String details) {
 		this.details = details;
 	}
+
+	public String getPrice() { return price; }
+	public void setPrice(String price) { this.price = price; }
+
+	public String getLocation() { return location; }
+	public void setLocation(String location) { this.location = location; }
 	
-	public CondominoPost() {
+	public UniversidadePost() {
 		//empty
 	}
 	@Override

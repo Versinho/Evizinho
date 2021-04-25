@@ -10,7 +10,7 @@ body {
 
 .topnav a {
   float: left;
-  color: #FF8000;
+  color: #5DD9C1;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -23,7 +23,7 @@ body {
 }
 
 .topnav a.active {
-  background-color: #FF8000;
+  background-color: #ACFCD9;
   color: white;
 }
 

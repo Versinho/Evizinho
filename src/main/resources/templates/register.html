@@ -96,8 +96,8 @@
             <h1>Cadastro</h1>
             <div class="row">
                 <label> Nome do usuário :
-                <input th:field="*{username}" id="username" name="username" type="text" required>
-            </label>
+                    <input th:field="*{username}" id="username" name="username" type="text" required>
+                </label>
 
                 <label> Senha :
                     <input th:field="*{password}" id="password" name="password" type="password"
@@ -109,19 +109,14 @@
                     <input th:field="*{name}" id="name" name="name" type="text" required>
                 </label>
 
-                <label> Sobrenome :
-                    <input th:field="*{lastname}" id="lastname" name="lastname" type="text" required>
-                </label>
-            </div>
-            <div class="row">
                 <label> Telefone :
                     <input th:field="*{phone}" id="phone" name="phone" type="text"/>
                 </label>
-
-                <label> Apartamento :
-                    <input th:field="*{apartment}" id="apartment" name="apartment" type="text">
-                </label>
             </div>
+
+            <label> Curso :
+                <input th:field="*{course}" id="course" name="course" type="text"/>
+            </label>
 
             <div>
                 <input class="send" type="submit" value="Enviar"></input>

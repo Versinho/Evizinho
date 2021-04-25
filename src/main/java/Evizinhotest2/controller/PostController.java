@@ -10,13 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import Evizinhotest2.model.CondominoPost;
-import Evizinhotest2.service.CondominoPostService;
+import Evizinhotest2.model.UniversidadePost;
+import Evizinhotest2.service.UniversidadePostService;
 
 @Controller
 public class PostController {
 	@Autowired
-	private CondominoPostService postService;
+	private UniversidadePostService postService;
 
 	private static final String MSG_SUCESS_ADD = "Post Adicionado com Sucesso!";
 	private static final String MSG_SUCESS_UPDATE = "Post Atualizado com Sucesso!";
@@ -24,23 +24,23 @@ public class PostController {
 	private static final String MSG_ERROR = "Error.";
 
 	@RequestMapping(value = "/posts")
-	public List<CondominoPost> getAllPosts(Model model)
+	public List<UniversidadePost> getAllPosts(Model model)
 	{
-		List<CondominoPost> posts = postService.getAllPosts();
+		List<UniversidadePost> posts = postService.getAllPosts();
 		model.addAttribute("posts", posts);
 		return posts;
 	}
 
 
 	@RequestMapping(value = "/posts/{id}")
-	public Optional<CondominoPost> getPost(@PathVariable Integer id) {
+	public Optional<UniversidadePost> getPost(@PathVariable Integer id) {
 		return postService.getPost(id);
 	}
 
 	@RequestMapping(value = "/posts/form", method=RequestMethod.GET)
 	public String addPost(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			CondominoPost post = new CondominoPost();
+			UniversidadePost post = new UniversidadePost();
 			model.addAttribute("post", post);
 		}
 		catch (Exception e) {
@@ -56,7 +56,7 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/posts/register", method=RequestMethod.POST)
-	public String addPost(CondominoPost post, RedirectAttributes redirectAttributes) {
+	public String addPost(UniversidadePost post, RedirectAttributes redirectAttributes) {
 		try {
 			postService.addPost(post);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
@@ -78,7 +78,7 @@ public class PostController {
 			if (id != null) {
 				//postService.updatePost(id, post);
 				//redirectAttributes.addFlashAttribute("success", MSG_SUCESS_UPDATE);
-				Optional<CondominoPost> post = postService.getPost(id);
+				Optional<UniversidadePost> post = postService.getPost(id);
 				model.addAttribute("post", post);
 			}
 		} catch (Exception e) {
@@ -88,7 +88,7 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/posts/update", method=RequestMethod.POST)
-	public String updatePost(CondominoPost post, RedirectAttributes redirectAttributes) {
+	public String updatePost(UniversidadePost post, RedirectAttributes redirectAttributes) {
 		try {
 			postService.addPost(post);
 			redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
@@ -122,7 +122,7 @@ public class PostController {
 	public String show(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (id != null) {
-				CondominoPost post = postService.getPost(id).get();
+				UniversidadePost post = postService.getPost(id).get();
 				model.addAttribute("post", post);
 			}
 		} catch (Exception e) {
@@ -134,16 +134,16 @@ public class PostController {
 
 	@RequestMapping(value="/posts/user/{id}")
 	public String getPostersByUserId(Model model, @PathVariable Integer id){
-		List<CondominoPost> posts = postService.getPostsByUser(id);
+		List<UniversidadePost> posts = postService.getPostsByUser(id);
 		model.addAttribute("posts", posts);
 		return "postsByUser";
 	}
 
-	@RequestMapping(value="/posts/{categoria}/{category}")
-	public String getPostersByCategory(Model model, @PathVariable String categoria, @PathVariable String category){
-		List<CondominoPost> posts = postService.filter(categoria, category);
+	@RequestMapping(value="/posts/{category}/{subCategory}")
+	public String getPostersByFilter(Model model, @PathVariable String category, @PathVariable String subCategory){
+		List<UniversidadePost> posts = postService.filter(category, subCategory);
 		model.addAttribute("posts", posts);
-		return "postsByCategory";
+		return "postsByPlataform";
 	}
 
 }

@@ -12,7 +12,7 @@ import Evizinhotest2.repository.PostRepository;
 
 @Service
 @Transactional
-public abstract class AbstractPostService<T extends Post> {
+public abstract class AbstractPostService<T extends Post<?>> {
 
 	@Autowired
 	private PostRepository<T> postRepository;
