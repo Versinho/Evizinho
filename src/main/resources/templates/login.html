@@ -3,19 +3,104 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Login</title>
+
+        <style>
+            .limiter {
+                background: linear-gradient(-135deg, #bdc3c7, #2c3e50);
+                width: 100vw;
+                height: 100vh;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .container {
+                background: #fff;
+                padding: 30px;
+                width: 600px;
+                border-radius: 10px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 30px;
+                flex-direction: column;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                font-family: Arial;
+                font-size: 25px;
+                color: #333;
+                text-align: center;
+                padding-bottom: 50px;
+                width: 100%;
+                display: block;
+            }
+
+            label {
+                padding: 20px;
+            }
+
+            input {
+                font-family: Arial;
+                font-size: 15px;
+                color: #666;
+                background: #e6e6e6;
+                padding: 0 30px 0 30px;
+                width: 100%;
+                display: block;
+                height: 50px;
+                border-radius: 25px;
+                border: #fff;
+                text-align: center;
+                outline: none;
+            }
+
+            .signin {
+                margin-top: 30px;
+                background: #d64e0a;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .register {
+                font-family: Arial;
+                font-size: 13px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                color: #666;
+            }
+
+        </style>
     </head>
     <body>
+    <div class="limiter">
         <div th:if="${param.error}">
             Invalid username and password.
         </div>
+
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> Usuário: <input type="text" name="username"/> </label></div>
-            <div><label> Senha: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
-        <a class="register" href="/users/form">Criar uma conta</a>
+
+        <div class="container">
+            <form th:action="@{/login}" method="post">
+                <h1>Login</h1>
+                <div><label> Usuário : <input type="text" name="username"/> </label></div>
+                <div><label> Senha: <input type="password" name="password"/> </label></div>
+                <div><input class="signin" type="submit" value="Sign In"/></div>
+            </form>
+            <a class="register" href="/users/form">Criar uma conta</a>
+        </div>
+    </div>
     </body>
 </html>
