@@ -138,25 +138,12 @@ public class PostController {
 		return "postsByUser";
 	}
 	
-	@RequestMapping(value="/posts/plataforma/{platform}")
-	public String getPostersByPlatform(Model model, @PathVariable String platform){
-		List<GamerPost> posts = postService.getPostsByPlatform(platform);
+	@RequestMapping(value="/posts/{category}/{subCategory}")
+	public String getPostersByFilter(Model model, @PathVariable String category, @PathVariable String subCategory){
+		List<GamerPost> posts = postService.filter(category, subCategory);
 		model.addAttribute("posts", posts);
 		return "postsByPlatform";
 	}
 	
-	@RequestMapping(value="/posts/genero/{genre}")
-	public String getPostersByGenre(Model model, @PathVariable String genre){
-		List<GamerPost> posts = postService.getPostsByGenre(genre);
-		model.addAttribute("posts", posts);
-		return "postsByGenre";
-	}
-	
-	@RequestMapping(value="/posts/condicao/{condition}")
-	public String getPostersByCondition(Model model, @PathVariable String condition){
-		List<GamerPost> posts = postService.getPostsByCondition(condition);
-		model.addAttribute("posts", posts);
-		return "postsByCondition";
-	}
 
 }

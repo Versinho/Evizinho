@@ -20,7 +20,7 @@ public class GamerPostService extends AbstractPostService<GamerPost>{
 		super(gamerPostRepository);
 	}
 	
-	public List<GamerPost> getPostsByPlatform(String platform){
+	/*public List<GamerPost> getPostsByPlatform(String platform){
 		return gamerPostRepository.findByPlatform(platform);
 	}
 	public List<GamerPost> getPostsByGenre(String genre){
@@ -28,5 +28,21 @@ public class GamerPostService extends AbstractPostService<GamerPost>{
 	}
 	public List<GamerPost> getPostsByCondition(String condition){
 		return gamerPostRepository.findByCondition(condition);
+	}*/
+
+	@Override
+	public List<GamerPost> filter(String category, String subCategory) {
+		if(category.equals("plataforma")) {
+			return gamerPostRepository.findByPlatform(subCategory);
+		}
+		else if(category.equals("genero")) {
+			return gamerPostRepository.findByGenre(subCategory);
+		}
+		else if(category.equals("condicao")) {
+			return gamerPostRepository.findByCondition(subCategory);
+		}
+		else {
+			return null;
+		}
 	}
 }
