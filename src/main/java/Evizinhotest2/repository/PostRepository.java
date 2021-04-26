@@ -10,6 +10,6 @@ import Evizinhotest2.model.Post;
 
 
 @NoRepositoryBean
-public interface PostRepository<T extends Post> extends JpaRepository<T, Integer> {
+public interface PostRepository<T extends Post<?>> extends JpaRepository<T, Integer> {
 	public List<T> findByUserId(Integer userId);
 }

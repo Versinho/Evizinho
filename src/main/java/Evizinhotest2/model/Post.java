@@ -1,6 +1,5 @@
 package Evizinhotest2.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -14,9 +13,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Post<T extends AbstractUser> implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+public abstract class Post<T extends AbstractUser>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
