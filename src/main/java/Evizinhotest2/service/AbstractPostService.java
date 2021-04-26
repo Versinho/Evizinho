@@ -3,7 +3,6 @@ package Evizinhotest2.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +13,6 @@ import Evizinhotest2.repository.PostRepository;
 @Transactional
 public abstract class AbstractPostService<T extends Post<?>> {
 	
-	@Autowired
 	private PostRepository<T> postRepository;
 	
 	public AbstractPostService(PostRepository<T> postRepository){

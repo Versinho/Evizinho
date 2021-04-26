@@ -90,7 +90,7 @@ public class PostController {
 	 public String updatePost(GamerPost post, RedirectAttributes redirectAttributes) {
 		 try {
 			 postService.addPost(post);
-			 redirectAttributes.addFlashAttribute("success", MSG_SUCESS_ADD);
+			 redirectAttributes.addFlashAttribute("success", MSG_SUCESS_UPDATE);
 		 } catch (Exception e) {
 			 System.out.println("Erro na inserção de um post");
 			 e.printStackTrace();
